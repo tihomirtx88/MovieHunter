@@ -1,12 +1,12 @@
-import BoxLatestTrailers from "./BoxLatestTrailers";
-import BoxTopRated from "./BoxTopRated";
+import BoxByTitle from "./BoxByTitle";
 import BoxMostComment from "./BoxMostComment";
+import WatchedMovies from "./WatchedMovies";
 
-export default function MainContent() {
+export default function MainContent({movies}) {
   return (
     <div id="content">
-      <BoxLatestTrailers/>
-      <BoxTopRated/>
+      <BoxByTitle movies={movies}/>
+      <WatchedMovies />
       <BoxMostComment/>
     </div>
   );

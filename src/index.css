@@ -270,6 +270,11 @@ h1#logo a {
 .box .last {
 	padding:0;
 }
+.box-movies-by-title{
+	text-shadow: 3px -6px 5px rgba(164,124,124,0.63);
+	font-size: 30px;
+    font-family: Roboto;
+}
 .rating {
 	float:left;
 	width:152px;

@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-export default function BoxLatestTrailers() {
+
+export default function WatchedMovies({ onSelectMovie}) {
   return (
     <div className="box">
       <div className="head">
-        <h2>LATEST TRAILERS</h2>
+        <h2>TOP RATED</h2>
         <p className="text-right">
           <Link to="#">See all</Link>
         </p>
@@ -12,10 +13,10 @@ export default function BoxLatestTrailers() {
         <div className="movie-image">
           {" "}
           <span className="play">
-            <span className="name">X-MAN</span>
+            <span className="name">TRANSFORMERS</span>
           </span>{" "}
           <Link to="#">
-            <img src={require("../../images/movie1.jpg")} alt="" />
+            <img src="css/images/movie7.jpg" alt="" />
           </Link>{" "}
         </div>
         <div className="rating">
@@ -30,10 +31,10 @@ export default function BoxLatestTrailers() {
         <div className="movie-image">
           {" "}
           <span className="play">
-            <span className="name">SPIDER MAN 2</span>
+            <span className="name">MAGNETO</span>
           </span>{" "}
           <Link to="#">
-            <img src={require("../../images/movie2.jpg")} alt="" />
+            <img src="css/images/movie8.jpg" alt="" />
           </Link>{" "}
         </div>
         <div className="rating">
@@ -48,10 +49,10 @@ export default function BoxLatestTrailers() {
         <div className="movie-image">
           {" "}
           <span className="play">
-            <span className="name">SPIDER MAN 3</span>
+            <span className="name">KUNG FU PANDA</span>
           </span>{" "}
           <Link to="#">
-            <img src={require("../../images/movie3.jpg")} alt="" />
+            <img src="css/images/movie9.jpg" alt="" />
           </Link>{" "}
         </div>
         <div className="rating">
@@ -66,10 +67,10 @@ export default function BoxLatestTrailers() {
         <div className="movie-image">
           {" "}
           <span className="play">
-            <span className="name">VALKYRIE</span>
+            <span className="name">EAGLE EYE</span>
           </span>{" "}
           <Link to="#">
-            <img ssrc={require("../../images/movie4.jpg")} alt="" />
+            <img src="css/images/movie10.jpg" alt="" />
           </Link>{" "}
         </div>
         <div className="rating">
@@ -84,10 +85,10 @@ export default function BoxLatestTrailers() {
         <div className="movie-image">
           {" "}
           <span className="play">
-            <span className="name">GLADIATOR</span>
+            <span className="name">NARNIA</span>
           </span>{" "}
           <Link to="#">
-            <img src="css/images/movie5.jpg" alt="" />
+            <img src="css/images/movie11.jpg" alt="" />
           </Link>{" "}
         </div>
         <div className="rating">
@@ -102,10 +103,10 @@ export default function BoxLatestTrailers() {
         <div className="movie-image">
           {" "}
           <span className="play">
-            <span className="name">ICE AGE</span>
+            <span className="name">ANGELS &amp; DEMONS</span>
           </span>{" "}
           <Link to="#">
-            <img src="css/images/movie6.jpg" alt="" />
+            <img src="css/images/movie12.jpg" alt="" />
           </Link>{" "}
         </div>
         <div className="rating">
