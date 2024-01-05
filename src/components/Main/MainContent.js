@@ -1,13 +1,16 @@
 import BoxByTitle from "./BoxByTitle";
-import BoxMostComment from "./BoxMostComment";
+import MovieList from "./MovieList";
+import MovieDetails from "./MovieDetails";
 import WatchedMovies from "./WatchedMovies";
 
-export default function MainContent({movies}) {
+export default function MainContent({movies, watched, onDeletedWatched,selectedId, oncloseHandler, onAddWatched, onSelectMovie}) {
   return (
     <div id="content">
-      <BoxByTitle movies={movies}/>
-      <WatchedMovies />
-      <BoxMostComment/>
+      <MovieList movies={movies} onSelectMovie={onSelectMovie}/> 
+      {/* <BoxByTitle movies={movies}/>
+      <WatchedMovies watched={watched} onDeletedWatched={onDeletedWatched}/> */}
+      <MovieDetails selectedId={selectedId} oncloseHandler={oncloseHandler} onAddWatched={onAddWatched} watched={watched}/>
+   
     </div>
   );
 }

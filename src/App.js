@@ -7,8 +7,11 @@ import SubNavigation from "./components/Header/SubNavigation";
 import Coming from "./components/Main/Coming";
 import Main from "./components/Main/Main";
 import MainContent from "./components/Main/MainContent";
-import News from "./components/Main/News";
+import News from "./components/Main/MovieDetails";
 import { useFetchByTitle } from "./hooks/useFetchByTitle";
+import Loader from "./components/Header/Loader";
+import ErrorMessage from "./components/Header/ErrorMessage";
+import MovieDetails from "./components/Main/MovieDetails";
 
 
 const key = "a21159f6";
@@ -75,12 +78,17 @@ function App() {
           <SubNavigation query={query} setQuery={setQuery} />
         </Header>
         <Main>
-          <MainContent
+           {isLoading && <Loader/>}
+           {!error && !isLoading &&  <MainContent
             movies={movies}
             onSelectMovie={handleSelectMovie}
-          />
-          <News />
+            watched={watched}
+            onDeletedWatched={handleDeletedWatched}
+            selectedId={selectedId}
+            oncloseHandler={handleCloseMovie}
+          />}
           <Coming />
+         
         </Main>
         <Footer />
       </>
