@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function Main({children}) {
   return (
     <div id="main">
