@@ -5,7 +5,7 @@ export default function MovieList({movies, onSelectMovie}) {
   return (
     <div className="box">
       <div className="head">
-        <h2>movie List</h2>
+        <h2 className="move-page-title">movie List</h2>
         <p className="text-right">
           <Link to="#">See all</Link>
         </p>
