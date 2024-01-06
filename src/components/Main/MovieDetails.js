@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useKey from "../../hooks/useKey";
 import Loader from "../Header/Loader";
 import ErrorMessage from "../Header/ErrorMessage";
+import StarsRating from "../../hooks/StartsRating";
 
 const key = "a21159f6";
 
@@ -102,43 +103,56 @@ export default function MovieDetails({
   return (
     <div className="details">
       {isLoading && <Loader />}
-      {!isLoading &&
-        !error &&(
-          <>
-            <header>
-              <button className="btm-back" onClick={()=> oncloseHandler()}>&larr;</button>
-              <img src={poster} alt={`Poster of ${movie} movie`} />
-              <div className="details-overview">
-                <h2>{title}</h2>
-                <p>{year}</p>
-                <p>
-                  {released} &bull; {runtime}
-                </p>
-                <p>{genre}</p>
-                <p>
-                  <span>⭐</span>
-                  {imdbRating} IMDB Rating
-                </p>
-              </div>
-            </header>
-            <section>
-              <div className="rating">{/* Todo */}</div>
-              {!isWatched ? 
-              (
-                <>
-                <div>Test</div>
-                </>
-              ) 
-              : 
-              (<p>You rated this movie with {watchUserRating}<span>⭐</span></p>)}
+      {!isLoading && !error && (
+        <>
+          <section className="top-section-details">
+            <img src={poster} alt={`Poster of ${movie} movie`} />
+            <button className="btm-back" onClick={() => oncloseHandler()}>
+              Close
+            </button>
+          </section>
+          <section className="bottom-section-details">
+            <div className="details-overview">
+              <h2>{title}</h2>
+              <p>{year}</p>
               <p>
-                <em>{plot}</em>
+                {released} &bull; {runtime}
               </p>
-              <p>Starring {actors}</p>
-              <p>Directed by {director}</p>
-            </section>
-          </>
-        )}
+              <p>{genre}</p>
+              <p>
+                <span>⭐</span>
+                {imdbRating} IMDB Rating
+              </p>
+            </div>
+            <div className="rating">
+              {!isWatched ? (
+                <>
+                  <StarsRating
+                    maxRating={10}
+                    size={24}
+                    onSetRating={setUserRating}
+                  />
+                  {userRating > 0 && (
+                    <button className="btn-add" onClick={() => handleAdd()}>
+                      Add to list
+                    </button>
+                  )}
+                </>
+              ) : (
+                <p>
+                  You rated this movie with {watchUserRating}
+                  <span>⭐</span>
+                </p>
+              )}
+            </div>
+            <p>
+              <em>{plot}</em>
+            </p>
+            <p>Starring {actors}</p>
+            <p>Directed by {director}</p>
+          </section>
+        </>
+      )}
       {error && <ErrorMessage message={error} />}
     </div>
   );

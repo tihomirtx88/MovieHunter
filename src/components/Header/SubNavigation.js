@@ -6,7 +6,7 @@ export default function SubNavigation({query, setQuery}) {
     <div id="sub-navigation">
       <ul>
         <li>
-          <Link to="#">SHOW ALL</Link>
+          <Link to="#">WATCHED MOVIES</Link>
         </li>
         <li>
           <Link to="#">LATEST TRAILERS</Link>
