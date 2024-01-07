@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import { useContext } from "react";
+import { MoviesContext } from "../../App";
 
-export default function SubNavigation({query, setQuery}) {
+export default function SubNavigation() {
+  const {query, setQuery} = useContext(MoviesContext);
   return (
     <div id="sub-navigation">
       <ul>
         <li>
-          <Link to="#">WATCHED MOVIES</Link>
+          <Link to="/watched">WATCHED MOVIES</Link>
         </li>
         <li>
           <Link to="#">LATEST TRAILERS</Link>

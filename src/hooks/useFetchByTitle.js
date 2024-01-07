@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 const key = "a21159f6";
 
 
-export function useFetchByTitle(query, callBack) {
+export default function useFetchByTitle(query, callBack) {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");

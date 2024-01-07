@@ -23,7 +23,6 @@ export default function Search({ query, setQuery }) {
           ref={inputElement}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <input type="submit" defaultValue="GO!" className="search-button" />
       </form>
     </div>
   );
