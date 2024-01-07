@@ -72,7 +72,7 @@ h4 {
   color: #f3b12b;
   font-weight: bold;
 }
-#shell {
+.shell {
   width: 1280px;
   margin: 0 auto;
 }
@@ -164,6 +164,7 @@ h1#logo a {
   border-top: 1px dashed #666;
   border-bottom: 1px dashed #666;
   padding: 8px 0;
+  justify-content: space-between;
 }
 #sub-navigation ul{
   display: flex;
@@ -183,11 +184,18 @@ h1#logo a {
   text-decoration: none;
 }
 #sub-navigation ul li a:hover {
-  text-decoration: underline;
+ color: #d91d2a;
 }
 #search {
-  width: 346px;
-  margin: 0 0 0 auto;
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+#search form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 #search label {
   float: left;
@@ -199,11 +207,13 @@ h1#logo a {
   padding-right: 6px;
 }
 #search .search-field {
-  width: 238px;
+  width: 350px;
   border: 1px solid #413e3e;
+  border-radius: 10px;
   background: #000;
   color: #787878;
-  padding: 2px 0 2px 2px;
+  padding: 10px 5px;
+  cursor: pointer;
 }
 #search .search-button {
   font-size: 14px;
@@ -552,3 +562,36 @@ h1#logo a {
 .bottom-section-details p{
   margin: 10px 0;
 }
+.favorite-movies-section{
+ display: flex;
+ padding: 20px;
+ width: 100%;
+ align-items: center;
+ justify-content: space-around;
+}
+.favorite-movies-section img{
+  width: 500px;
+}
+.favorite-movies-section p{
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: monospace;
+  color: #f2a223;
+  width: 40%;
+}
+.watched-movie-wrapper{
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+.watched-movie-wrapper .rating{
+  padding: 0;
+  gap: 15px;
+}
+.watched-movie{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+

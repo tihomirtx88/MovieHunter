@@ -1,45 +1,18 @@
-import { useEffect, useState } from "react";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Navigation from "./components/Header/Navigation";
-import Social from "./components/Header/Social";
-import SubNavigation from "./components/Header/SubNavigation";
-import Coming from "./components/Main/Coming";
-import Main from "./components/Main/Main";
-import MainContent from "./components/Main/MainContent";
-import { useFetchByTitle } from "./hooks/useFetchByTitle";
-import Loader from "./components/Header/Loader";
+import {  Route, Routes } from "react-router-dom";
+import HomePage from "./components/Main/HomePage";
+import WatchedMovieList from "./components/Main/WatchedMovieList";
+import { createContext, useEffect, useState } from "react";
+import UseFetchBytitle from './hooks/useFetchByTitle';
+export const MoviesContext = createContext();
 
-
-
-const key = "a21159f6";
 
 function App() {
+
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const [watched, setWatched] = useState([]);
 
-  // useEffect(() => {
-  //   async function getFetch() {
-    
-  //     try {
-  //       const res = await fetch("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc", {
-  //         method: 'GET',
-  //         headers: {
-  //           accept: 'application/json',
-  //           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MjY5MjQ2MmQyMWQzNTNlYzZmMDBjYTYwM2ZkMGEwMSIsInN1YiI6IjY1ODcwMTU3MDcyMTY2Njc3ZmE1NzM5NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9JZyyvosf8UF3-d8hVGYboqV0ZM_rbnkY-XEs-_-dT8'
-  //         }
-  //       });
-  //       const data = await res.json();
-  //       console.log(data.results, 'asdasdas');
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   getFetch();
-  // }, []);
-
-  const { isLoading, movies, error } = useFetchByTitle(query, handleCloseMovie);
+  const { isLoading, movies, error } = UseFetchBytitle(query, handleCloseMovie);
 
 
   useEffect(() => {
@@ -68,31 +41,24 @@ function App() {
   };
 
   return (
-    <div id="shell">
-      <>
-        <Header>
-          <Social />
-          <Navigation />
-          <SubNavigation query={query} setQuery={setQuery} />
-        </Header>
-        <Main>
-           {isLoading && <Loader/>}
-           {!error && !isLoading &&  <MainContent
-            movies={movies}
-            onSelectMovie={handleSelectMovie}
-            watched={watched}
-            onDeletedWatched={handleDeletedWatched}
-            selectedId={selectedId}
-            oncloseHandler={handleCloseMovie}
-            isLoading={isLoading}
-            error={error}
-          />}
-          <Coming />
-         
-        </Main>
-        <Footer />
-      </>
-    </div>
+    <MoviesContext.Provider value={{
+      onSelectMovie: handleSelectMovie,
+      onDeletedWatched: handleDeletedWatched,
+      onAddWatched: handleAddWatched,
+      oncloseHandler: handleCloseMovie,
+      watched: watched,
+      movies: movies,
+      isLoading: isLoading,
+      error: error,
+      selectedId: selectedId,
+      query:query,
+      setQuery: setQuery
+    }}>
+      <Routes>
+         <Route index element={<HomePage/>}/>
+         <Route path="watched" element={<WatchedMovieList/>}/>
+      </Routes>
+    </MoviesContext.Provider>
   );
 }
 

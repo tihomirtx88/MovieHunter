@@ -10,11 +10,21 @@ export default function MovieList({movies, onSelectMovie}) {
           <Link to="#">See all</Link>
         </p>
       </div>
-      <ul className="list list-movies">
+      {movies.length > 0 ? 
+      (
+        <ul className="list list-movies">
            {movies.map((movie) => (
                <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie}/>
            ))}
       </ul>
+      ) 
+      : 
+      (
+        <div className="favorite-movies-section">
+          <p>Search to find you favorites movies</p>
+          <img src={require('./../../images/favorite-movies.jpg')} alt="" />
+        </div>
+      )}
       <div className="cl">&nbsp;</div>
     </div>
   );
